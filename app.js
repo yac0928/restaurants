@@ -10,12 +10,12 @@ app.set('views', './views')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.redirect('restaurants')
+  res.redirect('/restaurants')
 })
 
 app.get('/restaurants', (req, res) => {
-  let kw = req.query.keyword?.trim()
-  let matchedOnes = kw ? restaurants.filter(one => 
+  const kw = req.query.keyword?.trim()
+  const matchedOnes = kw ? restaurants.filter(one => 
     Object.values(one).some(value => {
       if (typeof value === 'string') {
         return value.toLowerCase().includes(kw.toLowerCase())
